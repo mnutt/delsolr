@@ -150,6 +150,7 @@ module DelSolr
 
       # it's important that the QueryBuilder returns strings in a deterministic fashion
       # so that the cache keys will match for the same query.
+      Rails.logger.warn query_builder.request_string
       cache_key = Digest::MD5.hexdigest(query_builder.request_string)
       from_cache = false
 
